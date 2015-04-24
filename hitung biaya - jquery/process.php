@@ -32,6 +32,30 @@ if(isset($_GET['act'])):
 		endif;
 //end of parse json
 		break;
+		case 'alvincost':
+		$origin = $_GET['origin'];
+		$destination = $_GET['destination'];
+		$weight = $_GET['weight'];
+		$courier = $_GET['courier'];
+		$cost = $IdmoreRO->hitungOngkir($origin,$destination,$weight,$courier);
+		//parse json
+		$costarray = json_decode($cost);
+		$results = $costarray->rajaongkir->results;
+		echo '<br/>';
+		// print_r($results);
+		if(!empty($results)){
+			foreach($results as $r):
+				foreach($r->costs as $rc):
+					foreach($rc->cost as $rcc):
+						echo '<label><input onclick="totalOngkir()" type="radio" id="pilihpaket" name="pilihpaket" value="'.$rcc->value.'">'.$r->code.'<br/>'.$rc->service.'<br/>'.$rc->description.'Rp.'.number_format($rcc->value).'</label><br/>';
+					endforeach;
+				endforeach;
+			endforeach;
+		}else{
+			echo 'paket tidak tersedia';
+		}
+//end of parse json
+		break;
 		default:
 		echo 'aksi tidak tersedia';
 		break;

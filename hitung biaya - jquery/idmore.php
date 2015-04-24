@@ -8,7 +8,7 @@ class IdmoreRO{
 	public function __construct()
 	{
 		//masukan api key disini
-		$this->key = 'INPUT API KEY HERE';	
+		$this->key = '';	
 	}
 	//menampilkan data provinsi
 	public function showProvince()
@@ -81,12 +81,12 @@ class IdmoreRO{
 			));
 		$response = curl_exec($curl);
 		$err = curl_error($curl);
-		curl_close($curl);	
+		curl_close($curl);
 		if ($err) {
 			$result = 'error';
 			return 'error';
 		} else {
 			return $response;
-		}	
+		}
 	}
 }
