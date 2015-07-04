@@ -8,7 +8,7 @@ class IdmoreRO{
 	public function __construct()
 	{
 		//masukan api key disini
-		$this->key = '';	
+		$this->key = 'af4b20e8d614587e8da20ef9f1ddab56';	
 	}
 	//menampilkan data provinsi
 	public function showProvince()
